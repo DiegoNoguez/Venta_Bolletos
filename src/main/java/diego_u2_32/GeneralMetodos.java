@@ -2,7 +2,7 @@ package diego_u2_32;
 import javax.swing.JOptionPane;
 public class GeneralMetodos {
     public byte x, precio,y,cantAdult, acumulador=0;
-    public double f,f1,DESCUENTO=0.15;
+    public double f,f1,DESCUENTO=0.15,total;
     public void impresion(){
         JOptionPane.showMessageDialog(null,"Bienvenido a esta central de"
                 + " Autobuses");
@@ -16,7 +16,7 @@ public class GeneralMetodos {
         JOptionPane.showMessageDialog(null,"El precio del boleto para la ruta"
                 + " seleccionada es de $"+precio);
         descuentoSiNo(y);
-        contadorAdMa();
+        operacion(f1);
     }
     public byte precioPorBol(byte a){
         
@@ -51,27 +51,25 @@ public class GeneralMetodos {
     
     public double operacion (double f){
         if(y==1){
-            f=precio*DESCUENTO;
-            f1=precio-f;
-        }else{
-            f1=precio;
+            acumulador+=y;
+            if (acumulador<=5){
+                f=precio*DESCUENTO;
+                f1=precio-f;
+                JOptionPane.showMessageDialog(null,"El precio final de su boleto"
+                        + "junto a su desceunto de adulto mayor es $"+f1);
+            }else{
+                f1=precio;
+                JOptionPane.showMessageDialog(null,"El precio del boleto sigue"
+                        + " siendo el mismo $"+f1);
+            }
         }
+        total=f1;
         return f1;
     }
     
-    byte contadorAdMa(){
-        acumulador+=y;
-        if (acumulador<=5){
-            operacion(f1);
-            JOptionPane.showMessageDialog(null,"El precio del boleto ya con su descuento"
-                    + " es de $"+f1);
-        }
-        return cantAdult;
-    }
-    
-    public int  gananciatotal(int fde){
-        int total=0;
-        total+=f1;
+    public double ganaciatotal(double gto){
+        gto=f1;
+        total=gto;
         return total;
     }
-}
+} 
